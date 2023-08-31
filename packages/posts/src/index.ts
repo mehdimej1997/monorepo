@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import { v4 as uuid } from "uuid"
 
 type Post = Record<string, any>
@@ -9,6 +10,7 @@ const posts = {} as Post
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors({ origin: "*" }))
 
 app.get("/posts", (req, res) => {
   res.send(posts)
